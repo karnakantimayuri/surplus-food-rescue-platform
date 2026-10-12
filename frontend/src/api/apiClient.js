@@ -1,8 +1,7 @@
 // Surplus Food Rescue Platform - Fetch API HTTP Client
 // Follows strict project specification: uses Fetch API only, no external libraries.
 
-const BASE_URL = '/api';
-
+const BASE_URL = `${import.meta.env.VITE_API_URL || ''}/api`;
 export const apiClient = {
   async request(endpoint, options = {}) {
     const token = localStorage.getItem('token');
