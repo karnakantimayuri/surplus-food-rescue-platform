@@ -120,37 +120,6 @@ Millions of tons of edible, freshly prepared food from events, banquets, and com
 
 ---
 
-## 🔄 System Lifecycle & State Machines
-
-### Food Donation & Request Workflow
-
-```mermaid
-stateDiagram-v2
-    [*] --> AVAILABLE : Donor creates listing
-    AVAILABLE --> PARTIALLY_RESERVED : NGO Request Approved (remaining > 0)
-    AVAILABLE --> FULLY_RESERVED : NGO Request Approved (remaining == 0)
-    PARTIALLY_RESERVED --> FULLY_RESERVED : All stock allocated
-    PARTIALLY_RESERVED --> AVAILABLE : Request cancelled / restored
-    FULLY_RESERVED --> IN_PROGRESS : Volunteer collects food
-    PARTIALLY_RESERVED --> IN_PROGRESS : Volunteer collects food
-    IN_PROGRESS --> COMPLETED : Volunteer delivers to NGO
-    AVAILABLE --> CANCELLED : Donor cancels listing
-    AVAILABLE --> EXPIRED : Expiration time reached
-```
-
-### Volunteer Dispatch Workflow
-
-```mermaid
-stateDiagram-v2
-    [*] --> PENDING : Assignment created
-    PENDING --> ACCEPTED : Volunteer accepts task
-    ACCEPTED --> COLLECTED : Volunteer marks food collected (Donor site)
-    COLLECTED --> DELIVERED : Volunteer marks food delivered (NGO site)
-    PENDING --> CANCELLED : Assignment revoked
-```
-
----
-
 ## 💻 Technology Stack
 
 | Domain | Technology | Version | Purpose |
